@@ -1,0 +1,12 @@
+In this analysis, I compared the search results from Bing against the Google reference dataset using two metrics: percentage overlap and Spearman's rank correlation coefficient. 
+The results were calculated for 100 queries, and the averages for both metrics are provided below.
+
+Average Percent Overlap: 9.20%
+This indicates that, on average, approximately 9.2% of the URLs in the top 10 results from the assigned search engine overlap with those in Google's top 10 results for the same query. 
+The low overlap suggests that the search engine returns significantly different results compared to Google for most queries.
+
+
+Average Spearman Coefficient: 0.10
+The average Spearman correlation coefficient between the rankings of the URLs returned by the two search engines is 0.10. 
+This low positive correlation indicates that there is little similarity in the ranking of common URLs between the two search engines. 
+In many cases, either no URLs were shared between the two search engines, or the ranking order of the matching URLs was not well-aligned.

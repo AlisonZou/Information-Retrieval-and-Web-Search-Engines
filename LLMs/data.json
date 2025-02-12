@@ -1,0 +1,12 @@
+[
+    {"Category":"Books","Question":"Who wrote '1984'?","Answer":"George Orwell"},
+    {"Category":"Books","Question":"What is the title of the first book in the 'Harry Potter' series?","Answer":"Harry Potter and the Sorcerer's Stone"},
+    {"Category":"Books","Question":"What book features the character Atticus Finch?","Answer":"To Kill a Mockingbird"},
+    {"Category":"Books","Question":"Who wrote 'Moby-Dick'?","Answer":"Herman Melville"},
+    {"Category":"Books","Question":"In which book does the character 'Sherlock Holmes' appear?","Answer":"A Study in Scarlet"},
+    {"Category":"Books","Question":"Who is the author of 'The Great Gatsby'?","Answer":"F. Scott Fitzgerald"},
+    {"Category":"Books","Question":"What is the title of the book where the character Katniss Everdeen appears?","Answer":"The Hunger Games"},
+    {"Category":"Books","Question":"Who wrote 'Pride and Prejudice'?","Answer":"Jane Austen"},
+    {"Category":"Books","Question":"In which book does the character Frodo Baggins appear?","Answer":"The Lord of the Rings"},
+    {"Category":"Books","Question":"What is the title of the book about a boy named Charlie and a chocolate factory?","Answer":"Charlie and the Chocolate Factory"}
+]

@@ -1,0 +1,98 @@
+Description of the RAG Application Workflow and UI Functionality
+https://huggingface.co/spaces/MuntasirHossain/RAG-PDF-Chatbot
+
+1. RAG Application Workflow (Python Calls)
+This RAG application is a PDF question-answering system combining Retrieval-Augmented Generation (RAG). The steps are as follows:
+
+Step 1: File Input
+·Users upload a PDF file.
+·Python code loads the PDF and extracts the text using libraries like PyPDF2 or pdfplumber.
+Example Code:
+from PyPDF2 import PdfReader
+reader = PdfReader("uploaded_file.pdf")
+text = ""
+for page in reader.pages:
+    text += page.extract_text()
+
+Step 2: Vectorization of Text
+
+·Extracted text is split into chunks (e.g., paragraphs or pages) and vectorized using an embedding model (e.g., Hugging Face models).
+Example Code:
+from sentence_transformers import SentenceTransformer
+model = SentenceTransformer('all-MiniLM-L6-v2')
+embeddings = model.encode(text_chunks)
+
+Step 3: Build Vector Database
+·Vectors are stored in a database (e.g., FAISS or Pinecone) for efficient retrieval.
+Example Code (FAISS):
+import faiss
+index = faiss.IndexFlatL2(embedding_dim)
+index.add(embeddings)
+
+Step 4: Query Input
+·Users input a question via the UI, which is embedded into the same vector space.
+Example Code:
+query_embedding = model.encode(user_query)
+
+Step 5: Retrieve Relevant Texts
+·The system retrieves the most relevant text chunks based on the query embedding.
+Example Code:
+distances, indices = index.search(query_embedding, k=5)
+retrieved_texts = [text_chunks[i] for i in indices[0]]
+
+Step 6: Answer Generation
+·Retrieved texts are passed to a generation model (e.g., Meta-Llama or Mistral) to create the final answer.
+Example Code:
+from transformers import pipeline
+qa_pipeline = pipeline("question-answering", model="meta-llama")
+result = qa_pipeline(question=user_query, context=retrieved_context)
+
+Step 7: Output the Result
+·The generated answer is displayed to the user through the UI.
+
+
+
+
+2. UI Functionality Description
+This application’s UI is built using Gradio. The following components perform specific tasks:
+·File Upload
+Component: gr.File()
+Function: Allows users to upload a PDF file, triggering backend scripts to load and process the text.
+
+·Query Input
+Component: gr.Textbox()
+Function: Accepts user questions and passes them to the RAG workflow for answer generation.
+
+·Result Output
+Component: gr.Textbox()
+Function: Displays the generated answer from the language model.
+
+·Button Actions
+Component: gr.Button()
+Function:
+  Create vector database initializes the vector database.
+  Initialize Question Answering Chatbot loads the model and initializes the workflow.
+Example Gradio UI Code:
+import gradio as gr
+
+def rag_pipeline(file, query):
+    # Load PDF
+    text = load_pdf(file)
+    # Retrieve + Generate Answer
+    answer = generate_answer(text, query)
+    return answer
+
+# Gradio Interface
+with gr.Blocks() as demo:
+    file_input = gr.File(label="Upload PDF")
+    query_input = gr.Textbox(label="Ask a question")
+    output = gr.Textbox(label="Answer")
+    run_button = gr.Button("Submit")
+    
+    run_button.click(rag_pipeline, inputs=[file_input, query_input], outputs=output)
+
+demo.launch()
+
+
+3. Summary
+The application leverages Gradio to provide a user-friendly interface, simplifying the process of utilizing RAG technology. Its core workflow involves document ingestion, vectorization, retrieval, and language model generation. The UI and backend integration ensure smooth interaction via Python function bindings.

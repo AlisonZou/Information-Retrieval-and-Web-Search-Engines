@@ -1,0 +1,42 @@
+Name: Yifeng Zou
+USC ID: 7523547424
+News site crawled: foxnews.com
+Number of threads: 32 
+
+Fetch Statistics
+================
+# fetches attempted: 20000
+# fetches succeeded: 19827
+# fetches failed or aborted: 173
+
+Outgoing URLs:
+==============
+Total URLs extracted: 4245757
+# unique URLs extracted: 80556
+# unique URLs within News Site: 63255
+# unique URLs outside News Site: 17301
+
+Status Codes:
+=============
+200: 19827
+404: 76
+301: 97
+
+File Sizes:
+===========
+Total size (KB): 3350742.8193359375
+Average size (KB): 169.0075062713577
+< 1KB: 0
+1KB ~ <10KB: 7
+10KB ~ <100KB: 5548
+100KB ~ <1MB: 14271
+>= 1MB: 0
+
+Content Types:
+===============
+text/html: 19826
+
+
+
+I was assigned to crawl Wall Street Journal at first, but when crawling, it kept blocking me and requires me to create an account.
+So I changed to Fox News, and it works well for me.
